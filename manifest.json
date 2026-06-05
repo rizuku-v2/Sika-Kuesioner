@@ -1,13 +1,16 @@
 {
   "manifest_version": 3,
   "name": "MySika Kuesioner Otomatis",
-  "version": "3.0.0",
-  "description": "Mengisi kuesioner EDOM & Layanan di SIKA Unindra secara otomatis.",
+  "version": "3.5.0",
+  "description": "Mengisi kuesioner EDOM & Layanan di SIKA Unindra secara otomatis dengan tombol yang terintegrasi di halaman.",
   "icons": {
     "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "48": "images/icon32.png",
+    "128": "images/icon192.png"
   },
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": ["*://sika.unindra.ac.id/kuesioner*"],
@@ -17,7 +20,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["images/icon48.png"],
+      "resources": ["images/icon192.png"],
       "matches": ["*://sika.unindra.ac.id/*"]
     }
   ]

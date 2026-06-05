@@ -1,58 +1,109 @@
-/* --- Import Font --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- Tombol Aksi Mengambang (FAB) --- */
+#mysika-fab, #mysika-panel, #mysika-toast {
+    --mysika-primary: #0d79d1;
+    --mysika-primary-hover: #005f9b;
+    --mysika-secondary: #005f9b;
+    --mysika-secondary-hover: #004a7c;
+    --mysika-special: #1abc9c;
+    --mysika-special-hover: #16a085;
+    --mysika-bg-panel: #ffffff;
+    --mysika-bg-header: #f7fafc;
+    --mysika-bg-box: #edf2f7;
+    --mysika-text-main: #2d3748;
+    --mysika-text-title: #1a202c;
+    --mysika-text-muted: #718096;
+    --mysika-text-light: #ffffff;
+    --mysika-border-light: #e2e8f0;
+    --mysika-border-dark: #cbd5e0;
+}
+
+.mysika-theme-dark {
+    --mysika-primary: #3b82f6;
+    --mysika-primary-hover: #2563eb;
+    --mysika-secondary: #1e293b;
+    --mysika-secondary-hover: #0f172a;
+    --mysika-special: #10b981;
+    --mysika-special-hover: #059669;
+    --mysika-bg-panel: #1a202c;
+    --mysika-bg-header: #2d3748;
+    --mysika-bg-box: #4a5568;
+    --mysika-text-main: #e2e8f0;
+    --mysika-text-title: #f7fafc;
+    --mysika-text-muted: #a0aec0;
+    --mysika-text-light: #ffffff;
+    --mysika-border-light: #4a5568;
+    --mysika-border-dark: #718096;
+}
+
+.mysika-theme-hacker {
+    --mysika-primary: #00ff00;
+    --mysika-primary-hover: #00cc00;
+    --mysika-secondary: #003300;
+    --mysika-secondary-hover: #001a00;
+    --mysika-special: #00ff00;
+    --mysika-special-hover: #00cc00;
+    --mysika-bg-panel: #000000;
+    --mysika-bg-header: #050505;
+    --mysika-bg-box: #111111;
+    --mysika-text-main: #00ff00;
+    --mysika-text-title: #00ff00;
+    --mysika-text-muted: #00aa00;
+    --mysika-text-light: #000000;
+    --mysika-border-light: #00ff00;
+    --mysika-border-dark: #00aa00;
+}
+
 #mysika-fab {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 64px;
     height: 64px;
-    background: #0d79d1; /* Warna biru utama SIKA */
+    background: var(--mysika-primary);
     border-radius: 50%;
-    box-shadow: 0 8px 20px rgba(13, 121, 209, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 9998;
     transition: all 0.3s ease-in-out;
-    border: 2px solid #fff;
+    border: 2px solid var(--mysika-text-light);
 }
 
 #mysika-fab img {
     width: 36px;
     height: 36px;
-    filter: brightness(0) invert(1); /* Membuat ikon menjadi putih */
+    filter: brightness(0) invert(1);
     transition: transform 0.3s ease;
 }
 
 #mysika-fab:hover {
     transform: scale(1.1);
-    box-shadow: 0 12px 28px rgba(13, 121, 209, 0.3);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 #mysika-fab.mysika-fab-active {
     transform: rotate(45deg);
-    background: #005f9b; /* Biru lebih gelap saat aktif */
+    background: var(--mysika-primary-hover);
 }
 
-/* --- Panel Kontrol --- */
 #mysika-panel {
     position: fixed;
     bottom: 110px;
     right: 30px;
     width: 320px;
-    background: #ffffff;
+    background: var(--mysika-bg-panel);
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(45, 55, 72, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     z-index: 9999;
     font-family: 'Inter', sans-serif;
-    color: #2d3748; /* Warna teks gelap */
+    color: var(--mysika-text-main);
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform-origin: bottom right;
     overflow: hidden;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--mysika-border-light);
 }
 
 #mysika-panel.mysika-hidden {
@@ -64,24 +115,73 @@
 .mysika-header {
     padding: 18px 20px;
     text-align: center;
-    background: #f7fafc; /* Latar header abu-abu muda */
-    border-bottom: 1px solid #e2e8f0;
+    background: var(--mysika-bg-header);
+    border-bottom: 1px solid var(--mysika-border-light);
 }
 
 .mysika-title {
     font-size: 18px;
     font-weight: 700;
-    color: #1a202c;
+    color: var(--mysika-text-title);
 }
 
 .mysika-subtitle {
     font-size: 13px;
     font-weight: 400;
-    color: #718096;
+    color: var(--mysika-text-muted);
+}
+
+.mysika-lang-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--mysika-border-dark);
+    color: var(--mysika-text-muted);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lang-btn.active {
+    background: var(--mysika-primary);
+    color: var(--mysika-text-light);
+    border-color: var(--mysika-primary);
 }
 
 .mysika-content {
     padding: 20px;
+}
+
+.mysika-stats-container {
+    background: var(--mysika-bg-box);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px dashed var(--mysika-border-dark);
+}
+
+.mysika-stats-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mysika-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mysika-stats-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--mysika-primary);
+    margin-top: 4px;
 }
 
 .mysika-options-label {
@@ -89,51 +189,54 @@
     font-size: 14px;
     margin-bottom: 12px;
     text-align: left;
-    color: #4a5568;
+    color: var(--mysika-text-main);
 }
 
-/* --- Opsi Radio --- */
 .mysika-radio-group {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
+
 .mysika-radio-option {
     flex: 1;
 }
+
 .mysika-radio-option input[type="radio"] {
     display: none;
 }
+
 .mysika-radio-option label {
     display: block;
     padding: 10px;
-    border: 1px solid #cbd5e0;
+    border: 1px solid var(--mysika-border-dark);
     border-radius: 10px;
-    background: #edf2f7;
-    color: #4a5568;
+    background: var(--mysika-bg-box);
+    color: var(--mysika-text-main);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-align: center;
-    font-size: 9px; /* DIUBAH SESUAI PERMINTAAN */
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
 }
+
 .mysika-radio-option input[type="radio"]:checked + label {
-    background: #0d79d1;
-    color: #ffffff;
-    border-color: #0d79d1;
-    box-shadow: 0 4px 10px rgba(13, 121, 209, 0.2);
+    background: var(--mysika-primary);
+    color: var(--mysika-text-light);
+    border-color: var(--mysika-primary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Grup Tombol Aksi --- */
 .mysika-button-group {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
+
 .mysika-action-button {
-    background: #005f9b; /* Biru tua SIKA */
-    color: #FFFFFF;
+    background: var(--mysika-secondary);
+    color: var(--mysika-text-light);
     border: none;
     padding: 14px;
     font-size: 15px;
@@ -142,79 +245,134 @@
     font-weight: 600;
     transition: all 0.2s ease;
 }
+
 .mysika-action-button:hover {
-    background: #004a7c;
+    background: var(--mysika-secondary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 95, 155, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Tombol Spesial */
 .mysika-action-button.special {
-    background: #1abc9c; /* Warna hijau/teal SIKA */
-}
-.mysika-action-button.special:hover {
-    background: #16a085;
-    box-shadow: 0 6px 15px rgba(22, 160, 133, 0.2);
+    background: var(--mysika-special);
 }
 
-/* --- Footer --- */
+.mysika-action-button.special:hover {
+    background: var(--mysika-special-hover);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
 .mysika-footer {
     padding: 12px;
     text-align: center;
     font-size: 12px;
     font-weight: 500;
-    background: #f7fafc;
-    color: #718096;
-    border-top: 1px solid #e2e8f0;
+    background: var(--mysika-bg-header);
+    color: var(--mysika-text-muted);
+    border-top: 1px solid var(--mysika-border-light);
 }
+
 .mysika-footer a {
-    color: #0d79d1;
+    color: var(--mysika-primary);
     text-decoration: none;
     font-weight: 600;
 }
+
 .mysika-footer a:hover {
     text-decoration: underline;
 }
 
-/* --- Toast Notification --- */
 #mysika-toast {
     position: fixed;
     bottom: 30px;
     left: 30px;
-    background-color: #2d3748;
-    color: white;
-    padding: 12px 20px;
+    background-color: var(--mysika-bg-header);
+    color: var(--mysika-text-main);
     border-radius: 12px;
+    border: 1px solid var(--mysika-border-light);
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     z-index: 10000;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    overflow: hidden;
 }
+
 #mysika-toast.mysika-toast-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+.mysika-toast-content {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mysika-toast-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.mysika-theme-dark .mysika-toast-progress, .mysika-theme-hacker .mysika-toast-progress {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.mysika-toast-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: var(--mysika-primary);
+    transition: width linear;
+}
+
 #mysika-toast .mysika-toast-icon {
     width: 20px;
     height: 20px;
     margin-right: 12px;
     border-radius: 50%;
-    background-color: #4a90e2;
+    background-color: var(--mysika-primary);
     animation: mysika-pulse 2s infinite;
 }
-#mysika-toast.mysika-toast-success .mysika-toast-icon {
-    background-color: #1abc9c;
+
+#mysika-toast.mysika-toast-success .mysika-toast-icon, #mysika-toast.mysika-toast-success .mysika-toast-progress-bar {
+    background-color: var(--mysika-special);
     animation: none;
 }
-#mysika-toast.mysika-toast-error .mysika-toast-icon {
+
+#mysika-toast.mysika-toast-error .mysika-toast-icon, #mysika-toast.mysika-toast-error .mysika-toast-progress-bar {
     background-color: #e53e3e;
     animation: none;
 }
+
 @keyframes mysika-pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(74, 144, 226, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+@media screen and (max-width: 600px) {
+    #mysika-panel {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        bottom: 90px;
+    }
+    #mysika-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
+    #mysika-toast {
+        width: 80%;
+        left: 10%;
+        bottom: 20px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
 }
